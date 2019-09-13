@@ -1,0 +1,185 @@
+html {
+  background:#2d3748;
+}
+
+:root {
+  --simplegoals-font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  --simplegoals-main-color: #38b2ac;
+  --simplegoals-main-darken-color: #319795;
+  --simplegoals-grey-color: #718096;
+}
+
+[class^='simplegoals'], [class*=' simplegoals'],
+[class^='simplegoals'], [class*=' simplegoals']::before,
+[class^='simplegoals'], [class*=' simplegoals']::after {
+  border-width: 0;
+  border-style: solid;
+  line-height: 1.15;
+}
+
+.simplegoals-achievement {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  height: 6em;
+  top: 1em;
+  left: 1em;
+  background: white;
+  border-radius: 3em;
+  box-shadow: 0em 0em 2em 0em rgba(0,0,0,0.3);
+  overflow: hidden;
+  transition: all .7s linear;
+  max-width: 6em;
+  transform: translateX(-800px) rotate(-540deg);
+  opacity: 0;
+  font-size: 16px;
+}
+
+.simplegoals-achievement--opened {
+  animation: simplegoals-achievement--open 4s ease-out both;
+}
+
+@keyframes simplegoals-achievement--open {
+  0% {
+    transform: translateX(-800px) rotate(-540deg);
+    opacity: 0;
+    max-width: 6em;
+  }
+  30% {
+    transform: translateX(0) rotate(0deg);
+    opacity: 1;
+    max-width: 6em;
+  }
+  40% {
+    transform: translateX(0) rotate(0deg);
+    opacity: 1;
+    max-width: 6em;
+  }
+  100% {
+    transform: translateX(0) rotate(0deg);
+    max-width: 1000px;
+    opacity: 1;
+  }
+}
+
+.simplegoals-achievement--closed {
+  animation: simplegoals-achievement--close 4s ease-out both;
+}
+
+@keyframes simplegoals-achievement--close {
+  0% {
+    transform: translateX(0) rotate(0deg);
+    max-width: 1000px;
+    opacity: 1;
+  }
+  20% {
+    transform: translateX(0) rotate(0deg);
+    opacity: 1;
+    max-width: 6em;
+  }
+  30% {
+    transform: translateX(0) rotate(0deg);
+    opacity: 1;
+    max-width: 6em;
+  }
+  100% {
+    transform: translateX(-800px) rotate(-540deg);
+    opacity: 0;
+    max-width: 6em;
+  }
+}
+
+.simplegoals-achievement__icon {
+  display: flex;
+  width: 6em;
+  height: 6em;
+  justify-content: center;
+  align-items: center;
+  flex: 1 0 auto;
+  transform: translateY(0);
+  transition: all .5s;
+}
+
+.simplegoals-achievement:hover .simplegoals-achievement__icon {
+  transform: translateY(10em);
+}
+
+.simplegoals-achievement__icon img {
+  max-height: 3.5em;
+  max-width: 3.5em;
+}
+
+.simplegoals-achievement__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1 0 auto;
+}
+
+.simplegoals-achievement__notification {
+  margin: 0;
+  padding: .1em;
+  font-size: 1em;
+  font-family: var(--simplegoals-font-family);
+  color: var(--simplegoals-grey-color);
+}
+
+.simplegoals-achievement__name {
+  margin: 0;
+  padding: .1em;
+  font-size: 1.2em;
+  font-family: var(--simplegoals-font-family);
+  font-weight: bold;
+}
+
+.simplegoals-achievement__button {
+  background-color: var(--simplegoals-main-color);
+  font-family: var(--simplegoals-font-family);
+  display: flex;
+  font-size: 1em;
+  color: white;
+  padding: 1em;
+  margin-left: 1em;
+  margin-right: 1.5em;
+  border-radius: 3em;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  flex: 1 0 auto;
+}
+
+.simplegoals-achievement__button:hover {
+  background-color: var(--simplegoals-main-darken-color);
+}
+
+.simplegoals-achievement__close-button {
+  position: absolute;
+  background: none;
+  height: 2em;
+  width: 2em;
+  left: 2em;
+  top: 2em;
+  transform: translateY(-10em);
+  transition: all .5s;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  outline: 0;
+  font-size: 1em;
+}
+
+.simplegoals-achievement__close-button svg {
+  height: 2em;
+  width: 2em;
+  stroke: #E53E3E;
+  transition: all .5s;
+  transform: rotate(0);
+}
+
+.simplegoals-achievement__close-button svg:hover {
+  transform: rotate(-90deg);
+}
+
+.simplegoals-achievement:hover .simplegoals-achievement__close-button {
+  transform: translateY(0);
+}
