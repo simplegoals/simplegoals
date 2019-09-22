@@ -39,7 +39,7 @@ html {
 .simplegoals-achievement {
   display: flex;
   align-items: center;
-  position: absolute;
+  position: fixed;
   height: 6em;
   top: 1em;
   left: 1em;
@@ -336,7 +336,7 @@ html {
 
 .simplegoals-overview {
   display: block;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
@@ -383,8 +383,6 @@ html {
     width: auto;
   }
 }
-
-
 
 .simplegoals-overview__title {
   font-size: 2em;
