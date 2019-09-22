@@ -11,6 +11,7 @@ const SimpleGoals = (() => {
   let goals = null
   let achievement = null
   let achievementTimeout = null
+  let overview = null
 
   const setOptions = config => {
     if (config.timeout) {
@@ -57,37 +58,62 @@ const SimpleGoals = (() => {
     achievementButton.innerHTML = 'Learn more'
   }
 
-  const showAchievementPreview = () => {
+  const showAchievement = () => {
     achievement.classList.remove('simplegoals-achievement--closed')
     achievement.classList.add('simplegoals-achievement--opened')
     if (options.timeout) {
       clearTimeout(achievementTimeout)
-      achievementTimeout = setTimeout(hide, 5000)
+      achievementTimeout = setTimeout(hide, options.timeout)
     }
   }
 
-  const init = config => {
-    setOptions(config)
-    createDOMElements()
-    goals = config.goals
-    achievement = document.getElementById('simplegoals-achievement')
-    achievement.addEventListener('click', event => achievement.classList.toggle('simplegoals-achievement--clicked'))
-    const trigger = document.getElementById('simplegoals-achievement__close-button')
-    trigger.addEventListener('click', event => hide())
-  }
-
-  const unlock = (name) => {
-    setGoal(goals[name])
-    showAchievementPreview()
-  }
-
-  const hide = () => {
+  const hideAchievement = () => {
     achievement.classList.remove('simplegoals-achievement--opened')
     achievement.classList.add('simplegoals-achievement--closed')
     clearTimeout(achievementTimeout)
   }
 
-  return {init, unlock, hide}
+  const showOverview = () => {
+    overview.scrollTo(0, 0)
+    overview.classList.add('simplegoals-overview--opened')
+  }
+
+  const hideOverview = () => {
+    overview.classList.remove('simplegoals-overview--opened')
+  }
+
+  const initAchievement = () => {
+    achievement = document.getElementById('simplegoals-achievement')
+    achievement.addEventListener('click', event => achievement.classList.toggle('simplegoals-achievement--clicked'))
+    const trigger = document.getElementById('simplegoals-achievement__close-button')
+    trigger.addEventListener('click', event => hideAchievement())
+    const overviewTrigger = document.getElementById('simplegoals-achievement__button')
+    overviewTrigger.addEventListener('click', event => {
+      hideAchievement()
+      setTimeout(showOverview, 200)
+    })
+  }
+
+  const initOverview = () => {
+    overview = document.getElementById('simplegoals-overview')
+    const trigger = document.getElementById('simplegoals-overview__close-button')
+    trigger.addEventListener('click', event => hideOverview())
+  }
+
+  const init = config => {
+    setOptions(config)
+    goals = config.goals
+    createDOMElements()
+    initAchievement()
+    initOverview()
+  }
+
+  const unlock = (name) => {
+    setGoal(goals[name])
+    showAchievement()
+  }
+
+  return {init, unlock, showOverview}
 })()
 
 const goals = {
