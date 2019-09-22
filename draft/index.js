@@ -30,15 +30,15 @@ const SimpleGoals = (() => {
         </p>
         <p class="simplegoals-achievement__name" id="simplegoals-achievement__name"></p>
       </div>
-      <div class="simplegoals-achievement__button" id="simplegoals-achievement__button"></div>
-      <div class="simplegoals-achievement__close-button" id="simplegoals-achievement__close-button">
+      <button class="simplegoals-achievement__button" id="simplegoals-achievement__button"></button>
+      <button class="simplegoals-achievement__close-button" id="simplegoals-achievement__close-button">
         <svg viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g>
             <path d="M50 50L450 450" stroke-width="100" stroke-linecap="round"/>
             <path d="M50 450L450 50" stroke-width="100" stroke-linecap="round"/>
           </g>
         </svg>
-      </div>
+      </button>
     </div>
     `
     const node = new DOMParser().parseFromString(achievementNotificationHtmlString , 'text/html').body.firstChild
@@ -57,6 +57,15 @@ const SimpleGoals = (() => {
     achievementButton.innerHTML = 'Learn more'
   }
 
+  const showAchievementPreview = () => {
+    achievement.classList.remove('simplegoals-achievement--closed')
+    achievement.classList.add('simplegoals-achievement--opened')
+    if (options.timeout) {
+      clearTimeout(achievementTimeout)
+      achievementTimeout = setTimeout(hide, 5000)
+    }
+  }
+
   const init = config => {
     setOptions(config)
     createDOMElements()
@@ -67,21 +76,12 @@ const SimpleGoals = (() => {
     trigger.addEventListener('click', event => hide())
   }
 
-  const show = config => {
-    achievement.classList.remove('simplegoals-achievement--closed')
-    achievement.classList.add('simplegoals-achievement--opened')
-    if (options.timeout) {
-      clearTimeout(achievementTimeout)
-      achievementTimeout = setTimeout(hide, 5000)
-    }
-  }
-
   const unlock = (name) => {
     setGoal(goals[name])
-    show()
+    showAchievementPreview()
   }
 
-  const hide = config => {
+  const hide = () => {
     achievement.classList.remove('simplegoals-achievement--opened')
     achievement.classList.add('simplegoals-achievement--closed')
     clearTimeout(achievementTimeout)

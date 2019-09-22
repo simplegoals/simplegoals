@@ -2,20 +2,39 @@ html {
   background:#2d3748;
 }
 
-:root {
-  --simplegoals-font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  --simplegoals-main-color: #38b2ac;
-  --simplegoals-main-darken-color: #319795;
-  --simplegoals-grey-color: #718096;
-}
-
 [class^='simplegoals'], [class*=' simplegoals'],
 [class^='simplegoals'], [class*=' simplegoals']::before,
 [class^='simplegoals'], [class*=' simplegoals']::after {
+  /* Variables */
+  --simplegoals-font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  --simplegoals-color-white: #ffffff;
+  --simplegoals-color-black: #000000;
+  --simplegoals-color-teal500: #38b2ac;
+  --simplegoals-color-teal600: #319795;
+  --simplegoals-color-grey600: #718096;
+
+  /* Defaults */
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
   border-width: 0;
-  border-style: solid;
+  border-style: none;
+  outline: none;
   line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  box-sizing: border-box;
+  font-family: var(--simplegoals-font-family);
+  font-size: 1em;
+  font-weight: normal;
 }
+
+[class^='simplegoals']:focus, [class*=' simplegoals']:focus {
+  outline: none;
+  /* outline-style: solid;
+  outline-color: var(--simplegoals-color-teal500); */
+}
+
+/* #region Achievement */
 
 .simplegoals-achievement {
   display: flex;
@@ -24,7 +43,7 @@ html {
   height: 6em;
   top: 1em;
   left: 1em;
-  background: white;
+  background: var(--simplegoals-color-white);
   border-radius: 3em;
   box-shadow: 0em 0em 2em 0em rgba(0,0,0,0.3);
   overflow: hidden;
@@ -32,6 +51,7 @@ html {
   max-width: 6em;
   transform: translateX(-12em) rotate(-180deg);
   opacity: 0;
+  z-index: 1789;
   font-size: 16px;
 }
 
@@ -118,24 +138,21 @@ html {
   margin: 0;
   padding: .1em;
   font-size: 1em;
-  font-family: var(--simplegoals-font-family);
-  color: var(--simplegoals-grey-color);
+  color: var(--simplegoals-color-grey600);
 }
 
 .simplegoals-achievement__name {
   margin: 0;
   padding: .1em;
   font-size: 1.2em;
-  font-family: var(--simplegoals-font-family);
   font-weight: bold;
 }
 
 .simplegoals-achievement__button {
-  background-color: var(--simplegoals-main-color);
-  font-family: var(--simplegoals-font-family);
+  background-color: var(--simplegoals-color-teal500);
   display: flex;
   font-size: 1em;
-  color: white;
+  color: var(--simplegoals-color-white);
   padding: 1em;
   margin-left: 1em;
   margin-right: 1.5em;
@@ -150,7 +167,7 @@ html {
 }
 
 .simplegoals-achievement__button:hover {
-  background-color: var(--simplegoals-main-darken-color);
+  background-color: var(--simplegoals-color-teal600);
 }
 
 .simplegoals-achievement__close-button {
@@ -163,9 +180,6 @@ html {
   transform: translateY(-10em);
   transition: all .5s;
   cursor: pointer;
-  padding: 0;
-  margin: 0;
-  outline: 0;
   font-size: 1em;
 }
 
@@ -268,7 +282,6 @@ html {
   }
 }
 
-
 @keyframes simplegoals-achievement--open-mobile {
   0% {
     transform: translateX(-12em) rotate(-180deg);
@@ -316,3 +329,135 @@ html {
   }
 }
 
+/* #endregion Achievement */
+
+/* #region Overview */
+
+.simplegoals-overview {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0,0,0,.5);
+  font-style: 16px;
+  overflow: auto;
+  z-index: 1788;
+}
+
+.simplegoals-overview__wrapper {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1em;
+}
+
+.simplegoals-overview__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2em;
+  border-radius: 3em;
+  width: 640px;
+  background-color: var(--simplegoals-color-white);
+}
+
+@media (max-width: 639px) {
+  .simplegoals-overview__body {
+    width: auto;
+  }
+}
+
+.simplegoals-overview__title {
+  font-size: 2em;
+  font-weight: bolder;
+  margin: .5em;
+}
+
+.simplegoals-overview__subtitle {
+  color: var(--simplegoals-color-grey600);
+}
+
+.simplegoals-overview__goals {
+  margin: 1.5em 0;
+}
+
+.simplegoals-overview-goal {
+  display: flex;
+  align-items: center;
+}
+
+.simplegoals-overview-goal__icon {
+  display: flex;
+  margin-right: 1em;
+  height: 6em;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 auto;
+  transform: translateY(0);
+  transition: all .5s;
+}
+
+.simplegoals-overview-goal__icon img {
+  max-height: 3.5em;
+  max-width: 3.5em;
+}
+
+.simplegoals-overview-goal--locked .simplegoals-overview-goal__icon img {
+  filter: grayscale(100%);
+}
+
+.simplegoals-overview-goal__body {
+  padding: .5em 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.simplegoals-overview-goal__name {
+  padding: .1em;
+  font-size: 1.2em;
+  font-weight: bolder;
+}
+
+.simplegoals-overview-goal__description {
+  padding: .1em;
+  font-size: 1em;
+  color: var(--simplegoals-color-grey600);
+}
+
+.simplegoals-overview__close-button {
+  background-color: var(--simplegoals-color-teal500);
+  font-size: 1em;
+  color: var(--simplegoals-color-white);
+  padding: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1em;
+  border-radius: 3em;
+  cursor: pointer;
+  text-align: center;
+}
+
+.simplegoals-overview__close-button:hover {
+  background-color: var(--simplegoals-color-teal600);
+}
+
+.simplegoals-overview__attribution {
+  font-size: .9em;
+  color: var(--simplegoals-color-grey600);
+}
+
+.simplegoals-overview__attribution-link {
+  color: var(--simplegoals-color-teal500);
+}
+
+.simplegoals-overview__attribution-link:hover, .simplegoals-overview__attribution-link:active {
+  color: var(--simplegoals-color-teal600);
+}
+
+/* #endregion Overview */
