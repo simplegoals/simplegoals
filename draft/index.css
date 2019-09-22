@@ -215,7 +215,7 @@ html {
   }
 }
 
-@media (max-width: 639px) and (hover: none) {
+@media (max-width: 639px) {
   .simplegoals-achievement--opened {
     animation: simplegoals-achievement--open-mobile 2s ease-out both;
     max-width: calc(100vw - 2em);
@@ -227,6 +227,7 @@ html {
 
   .simplegoals-achievement__body {
     max-width: calc(100vw - 8em);
+    padding-right: 2em;
     transition: all .5s;
   }
 

@@ -31,7 +31,7 @@ const SimpleGoals = (() => {
         </p>
         <p class="simplegoals-achievement__name" id="simplegoals-achievement__name"></p>
       </div>
-      <button class="simplegoals-achievement__button" id="simplegoals-achievement__button"></button>
+      <div class="simplegoals-achievement__button" id="simplegoals-achievement__button" role="button"></div>
       <button class="simplegoals-achievement__close-button" id="simplegoals-achievement__close-button">
         <svg viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g>
