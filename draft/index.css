@@ -439,6 +439,7 @@ html {
   margin-right: auto;
   margin-bottom: 1em;
   border-radius: 3em;
+  min-width: 8em;
   cursor: pointer;
   text-align: center;
 }
