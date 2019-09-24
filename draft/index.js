@@ -7,11 +7,19 @@ const SimpleGoals = (() => {
   let options = {
     timeout: 0
   }
-  let currentGoal = null
   let goals = null
-  let achievement = null
-  let achievementTimeout = null
   let overview = null
+
+  const hashCode = (source) => {
+    let hash = 0;
+    if (source.length == 0) { return hash; }
+    for (var i = 0; i < source.length; i++) {
+      var char = source.charCodeAt(i);
+      hash = ((hash<<5)-hash)+char;
+      hash = hash & hash; // Convert to 32bit integer
+    }
+    return hash;
+  }
 
   const setOptions = config => {
     if (config.timeout) {
@@ -26,9 +34,16 @@ const SimpleGoals = (() => {
     }
   }
 
-  const createAchievementHtml = () => {
+  const recalculateAchievementsTop = () => {
+    const nodes = document.getElementsByClassName('simplegoals-achievement')
+    for(let i=0; i < nodes.length; i++) {
+      nodes[i].style.top = `${1 + i*7}em`
+    }
+  }
+
+  const createAchievementHtml = (key, goal, button) => {
     const achievementHtmlString = `
-    <div class="simplegoals-achievement" id="simplegoals-achievement">
+    <div class="simplegoals-achievement" id="simplegoals-achievement-${key}">
       <div class="simplegoals-achievement__icon">
         <img src="cup.svg" />
       </div>
@@ -36,10 +51,10 @@ const SimpleGoals = (() => {
         <p class="simplegoals-achievement__notification">
           New achievement unlocked
         </p>
-        <p class="simplegoals-achievement__name" id="simplegoals-achievement__name"></p>
+        <p class="simplegoals-achievement__name" id="simplegoals-achievement__name">${goal.name}</p>
       </div>
-      <div class="simplegoals-achievement__button" id="simplegoals-achievement__button" role="button"></div>
-      <button class="simplegoals-achievement__close-button" id="simplegoals-achievement__close-button">
+      <div class="simplegoals-achievement__button" id="simplegoals-achievement__button-${key}" role="button">${button}</div>
+      <button class="simplegoals-achievement__close-button" id="simplegoals-achievement__close-button-${key}">
         <svg viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g>
             <path d="M50 50L450 450" stroke-width="100" stroke-linecap="round"/>
@@ -50,7 +65,9 @@ const SimpleGoals = (() => {
     </div>
     `
     const node = new DOMParser().parseFromString(achievementHtmlString , 'text/html').body.firstChild
+    const box = document.getElementById("simplegoals-overview-box")
     document.body.appendChild(node)
+    return node
   }
 
   const overviewGoalsHtml = () => {
@@ -99,30 +116,26 @@ const SimpleGoals = (() => {
 
   const createDOMElements = () => {
     createOverviewHtml()
-    createAchievementHtml()
   }
 
-  const setGoal = (newGoal) => {
-    currentGoal = newGoal
-    achievementName = document.getElementById('simplegoals-achievement__name')
-    achievementButton = document.getElementById('simplegoals-achievement__button')
-    achievementName.innerHTML = currentGoal.name
-    achievementButton.innerHTML = 'Learn more'
-  }
-
-  const showAchievement = () => {
-    achievement.classList.remove('simplegoals-achievement--closed')
+  const showAchievement = (name, goal) => {
+    const key = hashCode(name)
+    const achievement = createAchievementHtml(key, goal, 'Learn more')
+    recalculateAchievementsTop()
     achievement.classList.add('simplegoals-achievement--opened')
+    initAchievement(key, achievement)
     if (options.timeout) {
-      clearTimeout(achievementTimeout)
-      achievementTimeout = setTimeout(hide, options.timeout)
+      achievementTimeout = setTimeout(() => hideAchievement(achievement), options.timeout)
     }
   }
 
-  const hideAchievement = () => {
+  const hideAchievement = (achievement) => {
     achievement.classList.remove('simplegoals-achievement--opened')
     achievement.classList.add('simplegoals-achievement--closed')
-    clearTimeout(achievementTimeout)
+    setTimeout(() => {
+      achievement.parentNode.removeChild(achievement)
+      recalculateAchievementsTop()
+    }, 2000)
   }
 
   const showOverview = () => {
@@ -134,14 +147,13 @@ const SimpleGoals = (() => {
     overview.classList.remove('simplegoals-overview--opened')
   }
 
-  const initAchievement = () => {
-    achievement = document.getElementById('simplegoals-achievement')
+  const initAchievement = (key, achievement) => {
     achievement.addEventListener('click', event => achievement.classList.toggle('simplegoals-achievement--clicked'))
-    const trigger = document.getElementById('simplegoals-achievement__close-button')
-    trigger.addEventListener('click', event => hideAchievement())
-    const overviewTrigger = document.getElementById('simplegoals-achievement__button')
+    const trigger = document.getElementById(`simplegoals-achievement__close-button-${key}`)
+    trigger.addEventListener('click', event => hideAchievement(achievement))
+    const overviewTrigger = document.getElementById(`simplegoals-achievement__button-${key}`)
     overviewTrigger.addEventListener('click', event => {
-      hideAchievement()
+      hideAchievement(achievement)
       setTimeout(showOverview, 200)
     })
   }
@@ -156,13 +168,11 @@ const SimpleGoals = (() => {
     setOptions(config)
     prepareGoals(config)
     createDOMElements()
-    initAchievement()
     initOverview()
   }
 
   const unlock = (name) => {
-    setGoal(goals[name])
-    showAchievement()
+    showAchievement(name, goals[name])
   }
 
   return {init, unlock, showOverview}
