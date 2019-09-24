@@ -342,7 +342,7 @@ html {
   bottom: 0;
   right: 0;
   background-color: rgba(0,0,0,.5);
-  font-style: 16px;
+  font-size: 16px;
   overflow: auto;
   z-index: 1788;
   opacity: 0;
