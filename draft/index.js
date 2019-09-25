@@ -16,6 +16,22 @@ const SimpleGoals = (() => {
     return hash;
   }
 
+  const saveLocalGoal = (name) => {
+    if (typeof(Storage) !== "undefined") {
+      localGoals = getLocalGoals()
+      localGoals.push(name)
+      localStorage.setItem('simplegoals-storage', JSON.stringify(localGoals))
+    }
+  }
+
+  const getLocalGoals = () => {
+    if (typeof(Storage) !== "undefined") {
+      return JSON.parse(localStorage.getItem('simplegoals-storage')) || []
+    } else {
+      return []
+    }
+  }
+
   const setOptions = config => {
     if (config.timeout) {
       options.timeout = config.timeout
@@ -24,8 +40,9 @@ const SimpleGoals = (() => {
 
   const prepareGoals = config => {
     goals = config.goals
+    const localGoals = getLocalGoals()
     for (const key of Object.keys(goals)) {
-      goals[key].unlocked = true
+      goals[key].unlocked = localGoals.includes(key)
     }
   }
 
@@ -92,7 +109,7 @@ const SimpleGoals = (() => {
         <div class="simplegoals-overview__body">
           <h1 class="simplegoals-overview__title">Achievements</h1>
           <p class="simplegoals-overview__subtitle">Complete tasks and unlock achievements</p>
-          <div class="simplegoals-overview__goals">
+          <div class="simplegoals-overview__goals" id="simplegoals-overview__goals">
           ` + overviewGoalsHtml() + `
           </div>
           <button class="simplegoals-overview__close-button" id="simplegoals-overview__close-button">
@@ -107,6 +124,10 @@ const SimpleGoals = (() => {
     `
     const node = new DOMParser().parseFromString(overviewHtmlString , 'text/html').body.firstChild
     document.body.appendChild(node)
+  }
+
+  const rerenderOverviewGoals = () => {
+    document.getElementById('simplegoals-overview__goals').innerHTML = overviewGoalsHtml()
   }
 
   const createDOMElements = () => {
@@ -167,7 +188,14 @@ const SimpleGoals = (() => {
   }
 
   const unlock = (name) => {
+    if(!goals[name]) { return }
+    if(goals[name].unlocked){
+      return
+    }
+    goals[name].unlocked = true
+    saveLocalGoal(name)
     showAchievement(name, goals[name])
+    rerenderOverviewGoals()
   }
 
   return {init, unlock, showOverview}
