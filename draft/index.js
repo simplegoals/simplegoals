@@ -1,9 +1,4 @@
 const SimpleGoals = (() => {
-  const States = {
-    CLOSED: 0,
-    ACHIEVEMENT_OPENED: 1
-  }
-  let state = States.CLOSED
   let options = {
     timeout: 0
   }
