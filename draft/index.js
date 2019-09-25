@@ -84,7 +84,8 @@ const SimpleGoals = (() => {
 
   const overviewGoalsHtml = () => {
     let result = "";
-    for (const key of Object.keys(goals)) {
+    const sortedKeys = Object.keys(goals).sort((a, b) => goals[b].unlocked - goals[a].unlocked)
+    for (const key of sortedKeys) {
       result += `
       <div class="simplegoals-overview-goal ${goals[key].unlocked ? "" : "simplegoals-overview-goal--locked"}">
         <div class="simplegoals-overview-goal__icon">
