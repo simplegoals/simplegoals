@@ -1,6 +1,7 @@
 const SimpleGoals = (() => {
   let options = {
-    timeout: 0
+    timeout: 0,
+    onGoalUnlock: (goalName) => {}
   }
   let goals = null
   let overview = null
@@ -35,6 +36,9 @@ const SimpleGoals = (() => {
   const setOptions = config => {
     if (config.timeout) {
       options.timeout = config.timeout
+    }
+    if (config.onGoalUnlock) {
+      options.onGoalUnlock = config.onGoalUnlock
     }
   }
 
@@ -194,6 +198,7 @@ const SimpleGoals = (() => {
       return
     }
     goals[name].unlocked = true
+    options.onGoalUnlock(name)
     saveLocalGoal(name)
     showAchievement(name, goals[name])
     rerenderOverviewGoals()
