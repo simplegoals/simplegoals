@@ -206,18 +206,3 @@ const SimpleGoals = (() => {
 
   return {init, unlock, showOverview}
 })()
-
-const goals = {
-  first: {
-    name: 'Curious Explorer',
-    descripton: 'Curious explorer curious explorer curious explorer curious explorer'
-  },
-  second: {
-    name: 'CUrious EXplorer',
-    descripton: 'CUrious explorer curious explorer curious explorer curious explorer'
-  }
-}
-
-SimpleGoals.init({
-  goals: goals
-})
