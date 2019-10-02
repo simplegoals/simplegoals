@@ -185,11 +185,20 @@ const SimpleGoals = (() => {
     trigger.addEventListener('click', event => hideOverview())
   }
 
+  const initButtons = () => {
+    document.addEventListener('click', function (event) {
+      if (!event.target.dataset.simplegoalsUnlock) return;
+      event.preventDefault();
+      unlock(event.target.dataset.simplegoalsUnlock);
+    }, false);
+  }
+
   const init = config => {
     setOptions(config)
     prepareGoals(config)
     createDOMElements()
     initOverview()
+    initButtons()
   }
 
   const unlock = (name) => {
