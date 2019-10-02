@@ -342,10 +342,12 @@
   overflow: auto;
   z-index: 1788;
   opacity: 0;
-  transition: all .7s;
+  transition: opacity .7s;
+  transform: translateY(100vh);
 }
 
 .simplegoals-overview--opened {
+  transform: translateY(0);
   opacity: 1;
 }
 
