@@ -4,6 +4,7 @@
   "description": "Simple way to add achievements to your website",
   "main": "index.js",
   "scripts": {
+    "build": "./node_modules/.bin/babel src/index.js -o simplegoals.min.js && ./node_modules/.bin/uglifyjs simplegoals.min.js -o simplegoals.min.js -cm && ./node_modules/.bin/postcss src/index.css -o simplegoals.min.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,5 +21,16 @@
   },
   "homepage": "https://github.com/simplegoals/simplegoals#readme",
   "dependencies": {
+    "@babel/polyfill": "^7.6.0",
+    "core-js": "2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.2",
+    "@babel/core": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "autoprefixer": "^9.6.1",
+    "cssnano": "^4.1.10",
+    "postcss-cli": "^6.1.3",
+    "uglify-js": "^3.6.0"
   }
 }
