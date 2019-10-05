@@ -2,9 +2,10 @@
   "name": "simplegoals",
   "version": "0.1.0",
   "description": "Simple way to add achievements to your website",
-  "main": "index.js",
+  "main": "dist/simplegoals.min.js",
   "scripts": {
-    "build": "./node_modules/.bin/babel src/index.js -o simplegoals.min.js && ./node_modules/.bin/uglifyjs simplegoals.min.js -o simplegoals.min.js -cm && ./node_modules/.bin/postcss src/index.css -o simplegoals.min.css",
+    "build": "./node_modules/.bin/webpack",
+    "playground": "(./node_modules/.bin/webpack --watch --config webpack.config.dev.js & ./node_modules/.bin/live-server playground/ --no-browser)",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,17 +21,24 @@
     "url": "https://github.com/simplegoals/simplegoals/issues"
   },
   "homepage": "https://github.com/simplegoals/simplegoals#readme",
-  "dependencies": {
-    "@babel/polyfill": "^7.6.0",
-    "core-js": "2"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/cli": "^7.6.2",
     "@babel/core": "^7.6.2",
+    "@babel/polyfill": "^7.6.0",
     "@babel/preset-env": "^7.6.2",
     "autoprefixer": "^9.6.1",
+    "babel-loader": "^8.0.6",
+    "core-js": "^3.2.1",
+    "css-loader": "^3.2.0",
     "cssnano": "^4.1.10",
+    "live-server": "^1.2.1",
+    "mini-css-extract-plugin": "^0.8.0",
     "postcss-cli": "^6.1.3",
-    "uglify-js": "^3.6.0"
+    "postcss-loader": "^3.0.0",
+    "style-loader": "^1.0.0",
+    "uglify-js": "^3.6.0",
+    "webpack": "^4.41.0",
+    "webpack-cli": "^3.3.9"
   }
 }
