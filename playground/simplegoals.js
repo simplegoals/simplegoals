@@ -220,7 +220,7 @@ const overviewGoalsHtml = () => {
       <div class="simplegoals-overview-goal__body">
         <h3 class="simplegoals-overview-goal__name">${goals[key].name}</h3>
         <p class="simplegoals-overview-goal__description">
-          ${goals[key].descripton}
+          ${goals[key].description}
         </p>
       </div>
     </div>
