@@ -183,9 +183,14 @@ const initOverview = () => {
 
 const initButtons = () => {
   document.addEventListener('click', function (event) {
-    if (!event.target.dataset.simplegoalsUnlock) return;
-    event.preventDefault();
-    unlock(event.target.dataset.simplegoalsUnlock);
+    if (event.target.dataset.simplegoalsUnlock) {
+      event.preventDefault()
+      unlock(event.target.dataset.simplegoalsUnlock)
+    }
+    if (event.target.dataset.simplegoalsOverview) {
+      event.preventDefault()
+      showOverview();
+    }
   }, false);
 }
 
