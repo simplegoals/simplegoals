@@ -1,11 +1,31 @@
 require ('./index.css')
 
+const apiUrl = "http://localhost:3000"
+
 let options = {
   timeout: 0,
-  onGoalUnlock: (goalName) => {}
+  onGoalUnlock: (goalName) => {},
+  useCloudStorage: false,
+  appId: null,
+  user: {}
 }
 let goals = null
 let overview = null
+
+const postRequest = async (endpoint, data) => {
+  const response = await fetch(`${apiUrl}${endpoint}`, {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  if(response.ok) {
+    return await response.json()
+  } else {
+    return false
+  }
+}
 
 const hashCode = (source) => {
   let hash = 0;
@@ -34,12 +54,47 @@ const getLocalGoals = () => {
   }
 }
 
-const setOptions = config => {
-  if (config.timeout) {
-    options.timeout = config.timeout
+const saveCloudGoal = async (name) => {
+  if (options.useCloudStorage) {
+    let data = {
+      name: name
+    }
+    addAuthData(data)
+    await postRequest("/goals/unlock", data)
+  } else {
+    return false
   }
-  if (config.onGoalUnlock) {
-    options.onGoalUnlock = config.onGoalUnlock
+}
+
+const setOptions = config => {
+  Object.assign(options, config)
+}
+
+const addAuthData = (hash) => {
+  hash.appId = options.appId
+  hash.user = options.user
+}
+
+const loadFromCloud = async () => {
+  if (options.useCloudStorage) {
+    let data = {
+      goals: Object.keys(goals).map((key) => {
+        return {
+          name: key,
+          description: goals[key].description
+        }
+      }),
+      unlockedGoals: Object.keys(goals).filter((key) => {
+        goals[key].unlocked
+      })
+    }
+    addAuthData(data)
+    const response = await postRequest("/sessions", data)
+    if (response) {
+      updateGoalsFromCloud(response)
+    }
+  } else {
+    return false
   }
 }
 
@@ -48,6 +103,12 @@ const prepareGoals = config => {
   const localGoals = getLocalGoals()
   for (const key of Object.keys(goals)) {
     goals[key].unlocked = localGoals.includes(key)
+  }
+}
+
+const updateGoalsFromCloud = (response) => {
+  for (const key of Object.keys(goals)) {
+    goals[key].unlocked = response.unlockedGoals.includes(key)
   }
 }
 
@@ -194,15 +255,16 @@ const initButtons = () => {
   }, false);
 }
 
-export const init = config => {
+export const init = async config => {
   setOptions(config)
   prepareGoals(config)
+  await loadFromCloud()
   createDOMElements()
   initOverview()
   initButtons()
 }
 
-export const unlock = (name) => {
+export const unlock = async (name) => {
   if(!goals[name]) { return }
   if(goals[name].unlocked){
     return
@@ -210,6 +272,7 @@ export const unlock = (name) => {
   goals[name].unlocked = true
   options.onGoalUnlock(name)
   saveLocalGoal(name)
+  await saveCloudGoal(name)
   showAchievement(name, goals[name])
   rerenderOverviewGoals()
 }
