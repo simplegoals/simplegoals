@@ -125,7 +125,7 @@ const apiUrl = "http://localhost:3000"
 
 let options = {
   timeout: 0,
-  onGoalUnlock: (goalName) => {},
+  onGoalUnlock: (goalKey) => {},
   useCloudStorage: false,
   appId: null,
   user: {}
