@@ -98,7 +98,11 @@ There are two ways to unlock goals.
  ```html
  <a data-simplegoals-unlock="secret" href="#">I'm a secret button</a>
  ```
- - You can call `SimpleGoals.unlock("key_of_goal")` method at any time. Example:
+ - You can call `SimpleGoals.unlock("key_of_goal")` method at any time.
+```js
+SimpleGoals.unlock("explorer")
+```
+Example:
  ```js
  // Scroll through half of the page
  if (document.body.scrollTop > document.body.scrollHeight / 2) {
@@ -114,7 +118,11 @@ There are also two ways to show all achievements.
  ```html
  <a data-simplegoals-overview="true" href="#">Show all achievements</a>
  ```
- - You can call `SimpleGoals.showOverview()` method at any time. Example:
+ - You can call `SimpleGoals.showOverview()` method at any time.
+ ```js
+ SimpleGoals.showOverview()
+ ```
+ Example:
  ```js
  // Scroll through half of the page
  if (document.body.scrollTop > document.body.scrollHeight / 2) {
@@ -127,6 +135,7 @@ There are also two ways to show all achievements.
 You can use next options:
 - **`goals`** - an `Object` with all possible goals. Each key is a key of the goal and each value should be an `Object` with `name` and `description`
 - **`useCloudStorage`** - (Default: `false`) If `true`, **[CloudStorage](#CloudStorage)** will be used and goals for users will be saved in the cloud and will be persistent across all browser sessions and devices of the user. If `false`, `LocalStorage` will be used. All data will be saved in the user's browser and will be not synced. If a user clears local storage or use another browser, all achievements will be lost.
+- **`onGoalUnlock`** - (Default: `function(goalKey){}`) This is callback method that will be called, when a goal will be unlocked. It takes a goal's `key` as a param. You can use this callback method to add custom logging or some API calls.
 - **`timeout`** - (Default: `0`) This options sets the time(in milliseconds) between achievements will be shown and achievements will be automatically hidden. If it is set to `0`, achievements will be not hidden automatically.
 - **`appId`** - (Default: `null`). Used only when **[CloudStorage](#CloudStorage)** is enabled. You can get your `appId` here: **https://api.simplegoals.co/projects/new**
 - **`user`** - (Default: `null`). Used only when **[CloudStorage](#CloudStorage)** is enabled. Used to determine user in CloudStorage. Object with `uid`, `email` and `name`. Either `uid` or `email` should be present.
@@ -134,7 +143,8 @@ You can use next options:
 Full example:
 ```js
 SimpleGoals.init({
-  goals: goals, // Required, Object with all goals
+  goals: goals, // Required, Object with all goals,
+  onGoalUnlock: function(goalKey){ console.log(goalKey) }, // Optiona. Callback method
   timeout: 10000, // Optional. 10 seconds in this case
   useCloudStorage: true, // Optional, using CloudStorage
   appId: "f072c862-4f88-4be9-a86e-521e4a282e68", // Optional, appId for CloudStorage, get it here: https://api.simplegoals.co/projects/new
