@@ -1,4 +1,3 @@
-
 <p align="center">
   <img src="https://raw.githubusercontent.com/simplegoals/simplegoals/FirstREADME/logo.png" alt="SimpleGoals: Beautiful and Easy-to-Use Achievements" width="40%">
 </p>
@@ -7,7 +6,11 @@
 
 <p align="center"><b>Prettier version of this documentation is available at <a href="https://simplegoals.co">simplegoals.co</a></b></p>
 
-- [Introduction](#introduction)
+**SimpleGoals** allows you to quickly and easily create achievements your users can accomplish. Why do you need it? Because you are happy when your users are intrugued and willing to interact with your website more.
+
+And even more: with **CloudStorage** option unlocked achievements will be syncronized across users' browser sessions and devices.(For free and without registration 😊)
+
+- [How it works?](#how-it-works)
 - [Installation](#installation)
   - [Intall using CDN (The easiest option)](#intall-using-cdn-the-easiest-option)
   - [Install using npm or yarn)](#install-using-npm-or-yarn)
@@ -21,7 +24,12 @@
 - [Development](#development)
 - [License](#license)
 
-# Introduction
+# How it works?
+
+- You create a list of goals your users can achieve 🏆
+- You decide when each achievement will be unlocked(e.g. on button click or when special page was opened) ⏰
+- You add a small JS snippet to your website 👩‍💻
+- Tada! 🎉
 
 # Installation
 
@@ -143,8 +151,8 @@ You can use next options:
 Full example:
 ```js
 SimpleGoals.init({
-  goals: goals, // Required, Object with all goals,
-  onGoalUnlock: function(goalKey){ console.log(goalKey) }, // Optiona. Callback method
+  goals: goals, // Required, Object with all goals
+  onGoalUnlock: function(goalKey){ console.log(goalKey) }, // Optional. Callback method
   timeout: 10000, // Optional. 10 seconds in this case
   useCloudStorage: true, // Optional, using CloudStorage
   appId: "f072c862-4f88-4be9-a86e-521e4a282e68", // Optional, appId for CloudStorage, get it here: https://api.simplegoals.co/projects/new
