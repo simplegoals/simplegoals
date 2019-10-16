@@ -2,7 +2,7 @@
   <img src="https://raw.githubusercontent.com/simplegoals/simplegoals/FirstREADME/logo.png" alt="SimpleGoals: Beautiful and Easy-to-Use Achievements" width="40%">
 </p>
 
-<p align="center">Engage your users with beautiful and easy-to-use achievements.</p>
+<p align="center">Motivate your users with pleasant and easy-to-use achievements.</p>
 
 <p align="center"><b>Prettier version of this documentation is available at <a href="https://simplegoals.co">simplegoals.co</a></b></p>
 
