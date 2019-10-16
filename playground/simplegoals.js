@@ -125,7 +125,7 @@ const apiUrl = "http://localhost:3000"
 
 let options = {
   timeout: 0,
-  onGoalUnlock: (goalName) => {},
+  onGoalUnlock: (goalKey) => {},
   useCloudStorage: false,
   appId: null,
   user: {}
@@ -244,7 +244,7 @@ const createAchievementHtml = (key, goal, button) => {
   const achievementHtmlString = `
   <div class="simplegoals-achievement" id="simplegoals-achievement-${key}">
     <div class="simplegoals-achievement__icon">
-      <img src="cup.svg" />
+      <img src="https://static.simplegoals.co/cup.svg" />
     </div>
     <div class="simplegoals-achievement__body">
       <p class="simplegoals-achievement__notification">
@@ -276,7 +276,7 @@ const overviewGoalsHtml = () => {
     result += `
     <div class="simplegoals-overview-goal ${goals[key].unlocked ? "" : "simplegoals-overview-goal--locked"}">
       <div class="simplegoals-overview-goal__icon">
-        <img src="cup.svg" />
+        <img src="https://static.simplegoals.co/cup.svg" />
       </div>
       <div class="simplegoals-overview-goal__body">
         <h3 class="simplegoals-overview-goal__name">${goals[key].name}</h3>
