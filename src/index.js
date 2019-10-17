@@ -1,6 +1,6 @@
 require ('./index.css')
 
-const apiUrl = "http://localhost:3000"
+const apiUrl = "https://api.simplegoals.co"
 
 let options = {
   timeout: 0,

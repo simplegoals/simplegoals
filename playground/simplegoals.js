@@ -121,7 +121,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "showOverview", function() { return showOverview; });
 __webpack_require__ (/*! ./index.css */ "./src/index.css")
 
-const apiUrl = "http://localhost:3000"
+const apiUrl = "https://api.simplegoals.co"
 
 let options = {
   timeout: 0,
