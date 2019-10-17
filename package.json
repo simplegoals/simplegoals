@@ -1,6 +1,6 @@
 {
   "name": "simplegoals",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Motivate your users with pleasant and easy-to-use achievements.",
   "main": "dist/simplegoals.min.js",
   "scripts": {
