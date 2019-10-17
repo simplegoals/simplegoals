@@ -281,3 +281,5 @@ export const showOverview = () => {
   overview.scrollTo(0, 0)
   overview.classList.add('simplegoals-overview--opened')
 }
+
+export default {init, unlock, showOverview}

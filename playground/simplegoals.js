@@ -2,7 +2,7 @@
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
 	else if(typeof define === 'function' && define.amd)
-		define([], factory);
+		define("SimpleGoals", [], factory);
 	else if(typeof exports === 'object')
 		exports["SimpleGoals"] = factory();
 	else
@@ -111,7 +111,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/*! exports provided: init, unlock, showOverview */
+/*! exports provided: init, unlock, showOverview, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -402,6 +402,8 @@ const showOverview = () => {
   overview.scrollTo(0, 0)
   overview.classList.add('simplegoals-overview--opened')
 }
+
+/* harmony default export */ __webpack_exports__["default"] = ({init, unlock, showOverview});
 
 
 /***/ })

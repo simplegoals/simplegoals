@@ -9,6 +9,7 @@ module.exports = {
     filename: 'simplegoals.min.js',
     library: 'SimpleGoals',
     libraryTarget: 'umd',
+    umdNamedDefine: true
   },
   module: {
     rules: [{

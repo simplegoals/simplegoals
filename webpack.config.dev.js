@@ -10,6 +10,7 @@ module.exports = {
     filename: 'simplegoals.js',
     library: 'SimpleGoals',
     libraryTarget: 'umd',
+    umdNamedDefine: true
   },
   plugins: [
     new MiniCssExtractPlugin({
