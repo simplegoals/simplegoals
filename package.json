@@ -13,7 +13,13 @@
     "url": "git+https://github.com/simplegoals/simplegoals.git"
   },
   "keywords": [
-    "achievements"
+    "achievements",
+    "goals",
+    "gamification",
+    "engage",
+    "engagement",
+    "motivate",
+    "motivation"
   ],
   "author": "Slava Korolev",
   "license": "MIT",
