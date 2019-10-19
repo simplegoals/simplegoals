@@ -34,26 +34,29 @@ And even more: with **CloudStorage** option unlocked achievements will be syncro
 # Installation
 
 ### Intall using CDN (The easiest option)
-Just add this line to HTML code of pages where you want to use SimpleGoals
+Just add this line to HTML code it before the closing `</body>` element.
 ```html
-<script type="text/javascript" src="https://static.simplegoals.co/simplegoals.min.js"></script>
+<script type="text/javascript" src="https://static.simplegoals.co/0.1.2/simplegoals-styles-included.min.js"></script>
+```
+And you're ready to use SimpleGoals!
+
+If you're going to update styles of SimpleGoals, you might want to load JS and styles separately:
+```html
+// Before closing </head> element
+<link rel="stylesheet" href="https://static.simplegoals.co/0.1.2/simplegoals.min.css">
+// Before closing </body> element
+<script type="text/javascript" src="https://static.simplegoals.co/0.1.2/simplegoals.min.js"></script>
 ```
 
-### Install using npm or yarn
-You can install SimpleGoals with npm or yarn:
+### Download files
+You can download SimpleGoals files from https://static.simplegoals.co/0.1.2/simplegoals.zip and add them to your project directory
 
-Terminal:
-```shell
-// With npm
-npm install simplegoals --save
-
-// With yarn
-yarn add simplegoals
-```
-
-HTML code of pages where you want to use SimpleGoals:
+Then load them in HTML:
 ```html
-<script type="text/javascript" src="simplegoals.js"></script>
+// Before closing </head> element
+<link rel="stylesheet" href="simplegoals.min.css">
+// Before closing </body> element
+<script type="text/javascript" src="simplegoals.min.js"></script>
 ```
 
 ### Install using module loaders like Webpack or Browserify  (Advanced option)
@@ -70,9 +73,11 @@ yarn add simplegoals
 Load SimpleGoals in your JS code
 ```js
 // Webpack
+import 'simplegoals/dist/simplegoals.min.css'
 import SimpleGoals from 'simplegoals';
 
 // Browserify
+require 'simplegoals/dist/simplegoals.min.css'
 var SimpleGoals = require('simplegoals');
 ```
 
