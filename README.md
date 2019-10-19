@@ -13,7 +13,7 @@ And even more: with **CloudStorage** option unlocked achievements will be syncro
 - [How it works?](#how-it-works)
 - [Installation](#installation)
   - [Intall using CDN (The easiest option)](#intall-using-cdn-the-easiest-option)
-  - [Install using npm or yarn)](#install-using-npm-or-yarn)
+  - [Download files](#download-files)
   - [Install using module loaders like Webpack or Browserify (Advanced option)](#install-using-module-loaders-like-webpack-or-browserify--advanced-option)
 - [Usage](#usage)
   - [Initializing](#initializing)
@@ -146,12 +146,15 @@ There are also two ways to show all achievements.
 ## Options
 
 You can use next options:
-- **`goals`** - an `Object` with all possible goals. Each key is a key of the goal and each value should be an `Object` with `name` and `description`
-- **`useCloudStorage`** - (Default: `false`) If `true`, **[CloudStorage](#CloudStorage)** will be used and goals for users will be saved in the cloud and will be persistent across all browser sessions and devices of the user. If `false`, `LocalStorage` will be used. All data will be saved in the user's browser and will be not synced. If a user clears local storage or use another browser, all achievements will be lost.
-- **`onGoalUnlock`** - (Default: `function(goalKey){}`) This is callback method that will be called, when a goal will be unlocked. It takes a goal's `key` as a param. You can use this callback method to add custom logging or some API calls.
-- **`timeout`** - (Default: `0`) This options sets the time(in milliseconds) between achievements will be shown and achievements will be automatically hidden. If it is set to `0`, achievements will be not hidden automatically.
-- **`appId`** - (Default: `null`). Used only when **[CloudStorage](#CloudStorage)** is enabled. You can get your `appId` here: **https://api.simplegoals.co/projects/new**
-- **`user`** - (Default: `null`). Used only when **[CloudStorage](#CloudStorage)** is enabled. Used to determine user in CloudStorage. Object with `uid`, `email` and `name`. Either `uid` or `email` should be present.
+
+Option | Default | Description
+-----|---------|------------
+**`goals`** | `[]` |  an `Object` with all possible goals. Each key is a key of the goal and each value should be an `Object` with `name` and `description`
+**`useCloudStorage`** | `false` | If `true`, **[CloudStorage](#CloudStorage)** will be used and goals for users will be saved in the cloud and will be persistent across all browser sessions and devices of the user. If `false`, `LocalStorage` will be used. All data will be saved in the user's browser and will be not synced. If a user clears local storage or use another browser, all achievements will be lost.
+**`onGoalUnlock`**  | `function(goalKey){}` | This is callback method that will be called, when a goal will be unlocked. It takes a goal's `key` as a param. You can use this callback method to add custom logging or some API calls.
+**`timeout`** | `0` | This options sets the time(in milliseconds) between achievements will be shown and achievements will be automatically hidden. If it is set to `0`, achievements will be not hidden automatically.
+**`appId`** | `null` | Used only when **[CloudStorage](#CloudStorage)** is enabled. You can get your `appId` here: **https://api.simplegoals.co/projects/new**
+**`user`** | `null` | Used only when **[CloudStorage](#CloudStorage)** is enabled. Used to determine user in CloudStorage. Object with `uid`, `email` and `name`. Either `uid` or `email` should be present.
 
 Full example:
 ```js
