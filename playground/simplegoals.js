@@ -386,7 +386,7 @@ const init = async config => {
 }
 
 const unlock = async (name) => {
-  if(!goals[name]) { return }
+  if(!goals || !goals[name]) { return }
   if(goals[name].unlocked){
     return
   }
@@ -399,6 +399,7 @@ const unlock = async (name) => {
 }
 
 const showOverview = () => {
+  if(!overview) { return }
   overview.scrollTo(0, 0)
   overview.classList.add('simplegoals-overview--opened')
 }

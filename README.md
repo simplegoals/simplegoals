@@ -36,20 +36,20 @@ And even more: with **CloudStorage** option unlocked achievements will be syncro
 ### Intall using CDN (The easiest option)
 Just add this line to HTML code it before the closing `</body>` element.
 ```html
-<script type="text/javascript" src="https://static.simplegoals.co/0.1.2/simplegoals-styles-included.min.js"></script>
+<script type="text/javascript" src="https://static.simplegoals.co/0.1.3/simplegoals-styles-included.min.js"></script>
 ```
 And you're ready to use SimpleGoals!
 
 If you're going to update styles of SimpleGoals, you might want to load JS and styles separately:
 ```html
 // Before closing </head> element
-<link rel="stylesheet" href="https://static.simplegoals.co/0.1.2/simplegoals.min.css">
+<link rel="stylesheet" href="https://static.simplegoals.co/0.1.3/simplegoals.min.css">
 // Before closing </body> element
-<script type="text/javascript" src="https://static.simplegoals.co/0.1.2/simplegoals.min.js"></script>
+<script type="text/javascript" src="https://static.simplegoals.co/0.1.3/simplegoals.min.js"></script>
 ```
 
 ### Download files
-You can download SimpleGoals files from https://static.simplegoals.co/0.1.2/simplegoals.zip and add them to your project directory
+You can download SimpleGoals files from https://static.simplegoals.co/0.1.3/simplegoals.zip and add them to your project directory
 
 Then load them in HTML:
 ```html

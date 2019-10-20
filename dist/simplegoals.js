@@ -497,7 +497,7 @@ function () {
       while (1) {
         switch (_context5.prev = _context5.next) {
           case 0:
-            if (goals[name]) {
+            if (!(!goals || !goals[name])) {
               _context5.next = 2;
               break;
             }
@@ -536,6 +536,10 @@ function () {
   };
 }();
 var showOverview = function showOverview() {
+  if (!overview) {
+    return;
+  }
+
   overview.scrollTo(0, 0);
   overview.classList.add('simplegoals-overview--opened');
 };
