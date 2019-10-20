@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2019-10-20
+### Added
+- Added `freshStart` option
+
 ## [0.1.3] - 2019-10-20
 ### Fixed
 - Removed errors when `unlock` or `showOverview` methods are called before `init`

@@ -113,6 +113,7 @@ var apiUrl = "https://api.simplegoals.co";
 var options = {
   timeout: 0,
   onGoalUnlock: function onGoalUnlock(goalKey) {},
+  freshStart: false,
   useCloudStorage: false,
   appId: null,
   user: {}
@@ -188,7 +189,7 @@ var hashCode = function hashCode(source) {
 };
 
 var saveLocalGoal = function saveLocalGoal(name) {
-  if (typeof Storage !== "undefined") {
+  if (typeof Storage !== "undefined" && !options.freshStart) {
     var localGoals = getLocalGoals();
     localGoals.push(name);
     localStorage.setItem('simplegoals-storage', JSON.stringify(localGoals));
@@ -196,7 +197,7 @@ var saveLocalGoal = function saveLocalGoal(name) {
 };
 
 var getLocalGoals = function getLocalGoals() {
-  if (typeof Storage !== "undefined") {
+  if (typeof Storage !== "undefined" && !options.freshStart) {
     return JSON.parse(localStorage.getItem('simplegoals-storage')) || [];
   } else {
     return [];

@@ -5,6 +5,7 @@ const apiUrl = "https://api.simplegoals.co"
 let options = {
   timeout: 0,
   onGoalUnlock: (goalKey) => {},
+  freshStart: false,
   useCloudStorage: false,
   appId: null,
   user: {}
@@ -39,7 +40,7 @@ const hashCode = (source) => {
 }
 
 const saveLocalGoal = (name) => {
-  if (typeof(Storage) !== "undefined") {
+  if (typeof(Storage) !== "undefined" && !options.freshStart) {
     let localGoals = getLocalGoals()
     localGoals.push(name)
     localStorage.setItem('simplegoals-storage', JSON.stringify(localGoals))
@@ -47,7 +48,7 @@ const saveLocalGoal = (name) => {
 }
 
 const getLocalGoals = () => {
-  if (typeof(Storage) !== "undefined") {
+  if (typeof(Storage) !== "undefined" && !options.freshStart) {
     return JSON.parse(localStorage.getItem('simplegoals-storage')) || []
   } else {
     return []
