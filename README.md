@@ -8,7 +8,7 @@
   <img src="https://raw.githubusercontent.com/simplegoals/simplegoals/master/demo.gif" alt="SimpleGoals: Beautiful and Easy-to-Use Achievements">
 </p>
 
-<p align="center"><b>A rettier version of this documentation is available at <a href="https://simplegoals.co">simplegoals.co</a></b></p>
+<p align="center"><b>Demo and a prettier version of this documentation is available at <a href="https://simplegoals.co">simplegoals.co</a></b></p>
 
 **SimpleGoals** allows you to quickly and easily create achievements your users can accomplish — add intriguing game elements to your website.
 
@@ -65,7 +65,7 @@ Then load them in HTML:
 <script type="text/javascript" src="simplegoals.min.js"></script>
 ```
 
-### Webpack or Browserify (Advanced option)
+### Webpack or Browserify (Advanced)
 
 Add package:
 ```shell
