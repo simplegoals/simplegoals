@@ -14,7 +14,7 @@
 
 And even more: **CloudStorage** allows you to keep users' achievements persistent across different browsers and devices. It only takes a couple of minutes to add new options to get everything ready.
 
-- [How it works?](#how-it-works)
+- [How it works?](#how-does-it-work)
 - [Installation](#installation)
   - [CDN (Easiest)](#cdn-easiest)
   - [Download files](#download-files)
@@ -28,7 +28,7 @@ And even more: **CloudStorage** allows you to keep users' achievements persisten
 - [Development](#development)
 - [License](#license)
 
-# How it works?
+# How does it work?
 
 - Create a list of goals your users can achieve. 🏆
 - Decide when each achievement is unlocked (e.g. on a button click, or when a special page was opened) ⏰
