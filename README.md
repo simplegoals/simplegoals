@@ -160,19 +160,38 @@ There are also two ways to show all achievements.
 
 Option | Default | Description
 -----|---------|------------
-**`goals`** | `[]` |  an `Object` with all possible goals. Each key is a key of the goal and each value should be an `Object` with `name` and `description`
+**`goals`** | `[]` |  An `Object` with all possible goals. Each key is a key of the goal and each value should be an `Object` with `name` and `description`
 **`useCloudStorage`** | `false` | If `true`, **[CloudStorage](#CloudStorage)** will be used and goals for users will be saved in the cloud and will be persistent across all browser sessions and devices of the user. If `false`, `LocalStorage` will be used. All data will be saved in the user's browser and will be not synced. If a user clears local storage or use another browser, all achievements will be lost.
+**`theme`** | see **[Theme Options](#theme-options)** | An `Object`, see **[Theme Options](#theme-options)**
 **`onGoalUnlock`**  | `function(goalKey){}` | This is callback method that will be called, when a goal will be unlocked. It takes a goal's `key` as a param. You can use this callback method to add custom logging or some API calls.
 **`freshStart`** | `false` | When `true` resets all goals every time a user refreshes or opens a new page. Works only when `useCloudStorage` is `false`.
 **`timeout`** | `0` | This options sets the time(in milliseconds) between achievement appears and automatically disappears. If it is set to `0`, achievements will be not hidden automatically.
 **`appId`** | `null` | Used only when **[CloudStorage](#CloudStorage)** is enabled. You can get your `appId` here: **https://api.simplegoals.co/projects/new**
 **`user`** | `null` | Used only when **[CloudStorage](#CloudStorage)** is enabled. Used to determine user in CloudStorage. Object with `uid`, `email`, and `name`. Either `uid` or `email` should be present.
 
-Full example:
+### Theme options
+Option | Default | Description
+-----|---------|------------
+**`fontFamily`** | Browser default | Specifies the font for an elements
+**`background`** | `#ffffff` | Background color
+**`primary`** | `#38b2ac` | The color of buttons and links
+**`title`** | `#000000` | The color of main labels
+**`subtitle`** | `#718096` | The color of additional text
+**`primaryHover`** | 7% darker than `primary` | The color of buttons and links in the hovered state, calculated automatically if not specified.
+**`opposite`** | `#000000` or `#FFFFFF` | The color of text on buttons, calculated automatically if not specified.
+
+Example:
 ```js
 SimpleGoals.init({
   goals: goals,
   onGoalUnlock: function(goalKey){ console.log(goalKey) },
+  theme: {
+    fontFamily: 'Arial, Helvetica, sans-serif',
+    background: '#ffffff',
+    primary: '#38b2ac',
+    title: '#000000',
+    subtitle: '#718096'
+  }
   timeout: 10000,
   useCloudStorage: true,
   appId: "f072c862-4f88-4be9-a86e-521e4a282e68",

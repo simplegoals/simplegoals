@@ -1,13 +1,15 @@
+import { applyStyles } from './styles'
+
 let overview = null
 
-export const initOverview = (goals) => {
-  createOverviewHtml(goals)
+export const initOverview = (goals, options) => {
+  createOverviewHtml(goals, options)
   overview = document.getElementById('simplegoals-overview')
   const trigger = document.getElementById('simplegoals-overview__close-button')
   trigger.addEventListener('click', event => hideOverview())
 }
 
-const createOverviewHtml = (goals) => {
+const createOverviewHtml = (goals, options) => {
   const overviewHtmlString = `
   <div class="simplegoals-overview" id="simplegoals-overview">
     <div class="simplegoals-overview__wrapper">
@@ -28,6 +30,7 @@ const createOverviewHtml = (goals) => {
   </div>
   `
   const node = new DOMParser().parseFromString(overviewHtmlString , 'text/html').body.firstChild
+  applyStyles(node, options)
   document.body.appendChild(node)
 }
 

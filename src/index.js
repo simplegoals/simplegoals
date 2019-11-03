@@ -20,7 +20,7 @@ export const init = async config => {
   Object.assign(options, config)
   goals = prepareGoals(options)
   await loadFromCloud(goals, options)
-  initOverview(goals)
+  initOverview(goals, options)
   initButtons(goals, options)
 }
 

@@ -1,15 +1,6 @@
 [class^='simplegoals'], [class*=' simplegoals'],
 [class^='simplegoals'], [class*=' simplegoals']::before,
 [class^='simplegoals'], [class*=' simplegoals']::after {
-  /* Variables */
-  --simplegoals-font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  --simplegoals-color-background: #ffffff;
-  --simplegoals-color-title: #000000;
-  --simplegoals-color-subtitle: #718096;
-  --simplegoals-color-primary: #38b2ac;
-  --simplegoals-color-primary-darken: #319795;
-  --simplegoals-color-opposite: #ffffff;
-
   /* Defaults */
   padding: 0;
   margin: 0;
@@ -165,7 +156,7 @@
 }
 
 .simplegoals-achievement__button:hover {
-  background-color: var(--simplegoals-color-primary-darken);
+  background-color: var(--simplegoals-color-primary-hover);
 }
 
 .simplegoals-achievement__close-button {
@@ -459,7 +450,7 @@
 }
 
 .simplegoals-overview__close-button:hover {
-  background-color: var(--simplegoals-color-primary-darken);
+  background-color: var(--simplegoals-color-primary-hover);
 }
 
 .simplegoals-overview__attribution {
@@ -472,7 +463,7 @@
 }
 
 .simplegoals-overview__attribution-link:hover, .simplegoals-overview__attribution-link:active {
-  color: var(--simplegoals-color-primary-darken);
+  color: var(--simplegoals-color-primary-hover);
 }
 
 /* #endregion Overview */

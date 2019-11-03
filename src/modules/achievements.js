@@ -2,8 +2,9 @@ import { hashCode } from './support'
 import { saveLocalGoal } from './local-goals'
 import { saveCloudGoal } from './cloud-storage'
 import { rerenderOverviewGoals, showOverview } from './overview'
+import { applyStyles } from './styles'
 
-const createAchievementHtml = (key, goal, button) => {
+const createAchievementHtml = (key, goal, button, options) => {
   const achievementHtmlString = `
   <div class="simplegoals-achievement" id="simplegoals-achievement-${key}">
     <div class="simplegoals-achievement__icon">
@@ -27,6 +28,7 @@ const createAchievementHtml = (key, goal, button) => {
   </div>
   `
   const node = new DOMParser().parseFromString(achievementHtmlString , 'text/html').body.firstChild
+  applyStyles(node, options)
   document.body.appendChild(node)
   return node
 }
@@ -40,7 +42,7 @@ const recalculateAchievementsTop = () => {
 
 const showAchievement = (name, goal, options) => {
   const key = hashCode(name)
-  const achievement = createAchievementHtml(key, goal, 'Learn more')
+  const achievement = createAchievementHtml(key, goal, 'Learn more', options)
   recalculateAchievementsTop()
   achievement.classList.add('simplegoals-achievement--opened')
   initAchievement(key, achievement)
