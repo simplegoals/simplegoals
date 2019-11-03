@@ -1,14 +1,6 @@
 [class^='simplegoals'], [class*=' simplegoals'],
 [class^='simplegoals'], [class*=' simplegoals']::before,
 [class^='simplegoals'], [class*=' simplegoals']::after {
-  /* Variables */
-  --simplegoals-font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  --simplegoals-color-white: #ffffff;
-  --simplegoals-color-black: #000000;
-  --simplegoals-color-teal500: #38b2ac;
-  --simplegoals-color-teal600: #319795;
-  --simplegoals-color-grey600: #718096;
-
   /* Defaults */
   padding: 0;
   margin: 0;
@@ -27,7 +19,7 @@
 [class^='simplegoals']:focus, [class*=' simplegoals']:focus {
   outline: none;
   /* outline-style: solid;
-  outline-color: var(--simplegoals-color-teal500); */
+  outline-color: var(--simplegoals-color-primary); */
 }
 
 /* #region Achievement */
@@ -39,7 +31,7 @@
   height: 6em;
   top: 1em;
   left: 1em;
-  background: var(--simplegoals-color-white);
+  background: var(--simplegoals-color-background);
   border-radius: 3em;
   box-shadow: 0em 0em 2em 0em rgba(0,0,0,0.3);
   overflow: hidden;
@@ -182,7 +174,7 @@
   margin: 0;
   padding: .1em;
   font-size: 1em;
-  color: var(--simplegoals-color-grey600);
+  color: var(--simplegoals-color-subtitle);
 }
 
 .simplegoals-achievement__name {
@@ -190,13 +182,14 @@
   padding: .1em;
   font-size: 1.2em;
   font-weight: bold;
+  color: var(--simplegoals-color-title);
 }
 
 .simplegoals-achievement__button {
-  background-color: var(--simplegoals-color-teal500);
+  background-color: var(--simplegoals-color-primary);
   display: flex;
   font-size: 1em;
-  color: var(--simplegoals-color-white);
+  color: var(--simplegoals-color-opposite);
   padding: 1em;
   margin-left: 1em;
   margin-right: 1.5em;
@@ -211,7 +204,7 @@
 }
 
 .simplegoals-achievement__button:hover {
-  background-color: var(--simplegoals-color-teal600);
+  background-color: var(--simplegoals-color-primary-hover);
 }
 
 .simplegoals-achievement__close-button {
@@ -470,7 +463,7 @@
   padding: 2em;
   border-radius: 3em;
   width: 640px;
-  background-color: var(--simplegoals-color-white);
+  background-color: var(--simplegoals-color-background);
 }
 
 @media (max-width: 639px) {
@@ -483,10 +476,11 @@
   font-size: 2em;
   font-weight: bolder;
   margin: .5em;
+  color: var(--simplegoals-color-title);
 }
 
 .simplegoals-overview__subtitle {
-  color: var(--simplegoals-color-grey600);
+  color: var(--simplegoals-color-subtitle);
 }
 
 .simplegoals-overview__goals {
@@ -530,18 +524,19 @@
   padding: .1em;
   font-size: 1.2em;
   font-weight: bolder;
+  color: var(--simplegoals-color-title);
 }
 
 .simplegoals-overview-goal__description {
   padding: .1em;
   font-size: 1em;
-  color: var(--simplegoals-color-grey600);
+  color: var(--simplegoals-color-subtitle);
 }
 
 .simplegoals-overview__close-button {
-  background-color: var(--simplegoals-color-teal500);
+  background-color: var(--simplegoals-color-primary);
   font-size: 1em;
-  color: var(--simplegoals-color-white);
+  color: var(--simplegoals-color-opposite);
   padding: 1em;
   margin-left: auto;
   margin-right: auto;
@@ -553,20 +548,20 @@
 }
 
 .simplegoals-overview__close-button:hover {
-  background-color: var(--simplegoals-color-teal600);
+  background-color: var(--simplegoals-color-primary-hover);
 }
 
 .simplegoals-overview__attribution {
   font-size: .9em;
-  color: var(--simplegoals-color-grey600);
+  color: var(--simplegoals-color-subtitle);
 }
 
 .simplegoals-overview__attribution-link {
-  color: var(--simplegoals-color-teal500);
+  color: var(--simplegoals-color-primary);
 }
 
 .simplegoals-overview__attribution-link:hover, .simplegoals-overview__attribution-link:active {
-  color: var(--simplegoals-color-teal600);
+  color: var(--simplegoals-color-primary-hover);
 }
 
 /* #endregion Overview */
