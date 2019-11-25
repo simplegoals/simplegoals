@@ -36,15 +36,18 @@
     "url": "https://github.com/simplegoals/simplegoals/issues"
   },
   "homepage": "https://github.com/simplegoals/simplegoals#readme",
-  "dependencies": {},
+  "browserslist": "> 0.25%, not dead",
+  "dependencies": {
+    "@babel/runtime": "^7.7.4",
+    "core-js": "3.4.2"
+  },
   "devDependencies": {
     "@babel/cli": "^7.6.2",
     "@babel/core": "^7.6.2",
-    "@babel/polyfill": "^7.6.0",
+    "@babel/plugin-transform-runtime": "^7.7.4",
     "@babel/preset-env": "^7.6.2",
     "autoprefixer": "^9.6.1",
     "babel-loader": "^8.0.6",
-    "core-js": "^3.2.1",
     "css-loader": "^3.2.0",
     "cssnano": "^4.1.10",
     "live-server": "^1.2.1",
