@@ -42,20 +42,20 @@ There are several ways to get started with SimpleGoals. You can use:
 ### CDN (Easiest)
 Just add this line to HTML code it before the closing `</body>` element.
 ```html
-<script type="text/javascript" src="https://static.simplegoals.co/0.3.0/simplegoals-styles-included.min.js"></script>
+<script type="text/javascript" src="https://static.simplegoals.co/0.3.1/simplegoals-styles-included.min.js"></script>
 ```
 And you're ready to use SimpleGoals!
 
 If you're going to update styles of SimpleGoals, you might want to load JS and styles separately:
 ```html
 // Before closing </head> element
-<link rel="stylesheet" href="https://static.simplegoals.co/0.3.0/simplegoals.min.css">
+<link rel="stylesheet" href="https://static.simplegoals.co/0.3.1/simplegoals.min.css">
 // Before closing </body> element
-<script type="text/javascript" src="https://static.simplegoals.co/0.3.0/simplegoals.min.js"></script>
+<script type="text/javascript" src="https://static.simplegoals.co/0.3.1/simplegoals.min.js"></script>
 ```
 
 ### Download files
-You can download SimpleGoals files from https://static.simplegoals.co/0.3.0/simplegoals.zip and add them to your project directory
+You can download SimpleGoals files from https://static.simplegoals.co/0.3.1/simplegoals.zip and add them to your project directory
 
 Then load them in HTML:
 ```html
